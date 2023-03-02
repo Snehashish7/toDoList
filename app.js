@@ -158,11 +158,11 @@ app.post("/delete", function (req, res) {
             console.log("Successfully deleted the item")
         })
         res.redirect("/") //redirects to the app.get("/") to show the updated list
-    }else{
+    } else {
 
-        newItem.findOneAndUpdate({name:newItemToBeDel_name},{$pull:{items:{_id:itemToBeDel_id}}},function(err,foundItem){   //finds an item deletes any found matching document from the array
-            if(!err){
-                res.redirect("/"+newItemToBeDel_name)
+        newItem.findOneAndUpdate({ name: newItemToBeDel_name }, { $pull: { items: { _id: itemToBeDel_id } } }, function (err, foundItem) {   //finds an item deletes any found matching document from the array
+            if (!err) {
+                res.redirect("/" + newItemToBeDel_name)
             }
         })   //condition, pull request, fn callback
     }
@@ -170,9 +170,12 @@ app.post("/delete", function (req, res) {
 
 let port = process.env.PORT;
 if (port == null || port == "") {
-  port = 5500;
+    port = 5500;
 }
- 
-app.listen(port, function() {
-  console.log("Server started succesfully");
-});  
+
+app.listen(port, function () {
+    console.log("Server started succesfully");
+});
+/*git remote add origin https://github.com/Snehashish7/toDoList.git
+git branch -M main
+git push -u origin main*/
